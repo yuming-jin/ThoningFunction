@@ -4,7 +4,17 @@ Curve Fitting Methods Applied to Time Series
 
 ------------------------------
 
-Defination of input variable
+**Required R packages**
+
+*lubridate*
+
+*dplR*
+
+*signal*
+
+------------------------------
+
+**Defination of input variable**
 
 dt: time 
 
@@ -23,6 +33,9 @@ interp: whether output interpolated data (daily resolution), default as True
 ------------------------------
 
 
-Example:
+**Example**
 
-load()
+mlo <- read.table('mlodata.txt')
+colnames(mlo) <- c('data','co2')
+mlo$date <- as.Date(mlo$date)
+  mlo <- thoning_fit(dt=mlo$date,value=mlo$co2,poly = 3,harm = 2, intercept = T, short.var.pass=c(1/4,3/2),long.var.pass = 2,interp=T)
